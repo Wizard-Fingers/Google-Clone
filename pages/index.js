@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Image from "next/image";
 import Logo from "../public/google.png";
 import { SearchIcon, MicrophoneIcon } from "@heroicons/react/solid";
+import Footer from "../components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,12 +53,13 @@ export default function Home() {
           <MicrophoneIcon className={styles.iconMike} />
         </div>
         <div className={styles.buttonsWrapper}>
+          {/* Buttons */}
           <button className={styles.buttons}>Google Search</button>
           <button className={styles.buttons}>I&apos;m Feeling Lucky</button>
         </div>
       </form>
-
       {/* Footer */}
+      <Footer/>
     </>
   );
 }
