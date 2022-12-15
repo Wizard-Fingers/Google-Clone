@@ -8,3 +8,6 @@
   @apply hover:text-blue-500;
   @apply cursor-pointer;
 }
+.btn {
+  @apply bg-[#f8f9fa] p-3 rounded-md text-sm text-gray-800 hover:ring-1 hover:ring-gray-300 focus:outline-none active:ring-gray-500 hover:shadow-md;
+}

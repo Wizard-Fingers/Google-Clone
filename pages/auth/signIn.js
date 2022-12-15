@@ -9,13 +9,13 @@ import GoogleImg from "../../public/google.png";
 export default function signin({ providers }) {
   const styles = {
     container: "flex flex-col items-center min-h-screen mt-40",
-    wrapper:" flex flex-col space-y-4 justify-center items-center",
+    wrapper: " flex flex-col space-y-4 justify-center items-center",
     logo: "object-cover",
     text: "text-sm italic my-10 text-center",
     info: "text-[#DB4437] font-bold",
-    link: "text-blue-500 hover:underline font-bold",
+    link: "text-[#4285F4] hover:underline font-bold",
     signInButton:
-      "bg-[#DB4437] hover:bg-blue-600 text-white px-4 py-2 rounded-md font-medium hover:brightness-115 hover:shadow-md mt-10",
+      "bg-[#4285F4] hover:bg-blue-600 text-white px-4 py-2 rounded-md font-medium hover:brightness-115 hover:shadow-md mt-10",
   };
   return (
     <>
@@ -31,19 +31,23 @@ export default function signin({ providers }) {
               height={40}
             />
             <p className={styles.text}>
-              <span className={styles.info}>This Website was Created for Learning Purposes Only...</span>
+              <span className={styles.info}>
+                This Website was Created for Learning Purposes Only...
+              </span>
               <br /> It has the same functionality as a Google search dose
               utilizing the free Google Developer resources.
               <br />
               Absolutely no data of yours is saved or used in this site other
               then what you give Google access to.
-              <br /> Feel free to check out the repository if you would like to see
-              the source code on{" "}
+              <br /> Feel free to check out the repository if you would like to
+              see the source code on{" "}
               <Link
                 href="https://github.com/Bear1986/Google-Clone"
-              className={styles.link}>
+                className={styles.link}
+              >
                 Github
-              </Link>.
+              </Link>
+              .
             </p>
             <button
               onClick={() => signIn(provider.id, { callbackUrl: "/" })}

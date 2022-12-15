@@ -1,11 +1,25 @@
-import Head from 'next/head'
-import { Inter } from '@next/font/google'
-import Header from '../components/Header'
+import Head from "next/head";
+import { Inter } from "@next/font/google";
+import Header from "../components/Header";
+import Image from "next/image";
+import Logo from "../public/google.png";
+import { SearchIcon, MicrophoneIcon } from "@heroicons/react/solid";
 
-
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const styles = {
+    searchContainer: "flex flex-col  mt-40 items-center",
+    logo: "object-fit",
+    searchWrapper:
+      "flex w-full mt-5 mx-auto max-w-[90%] border border-gary-200 hover:shadow-lg focus-within:shadow-lg px-5 py-3 rounded-full items-center sm:max-w-xl lg:max-w-2xl",
+    iconSearch: "h-6 text-gray-500 mr-3",
+    iconMike: "h-6  text-gray-500",
+    input: "flex-grow focus:outline-none",
+    buttonsWrapper:
+      "flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-[10rem] mt-5 ",
+    buttons: "btn", //this is a class I made in the global.css file that looks like the Google search buttons of Google Search and I'm Feeling Lucky
+  };
   return (
     <>
       <Head>
@@ -17,12 +31,33 @@ export default function Home() {
 
       {/* Header */}
 
-      <Header/>
+      <Header />
 
       {/* Body */}
 
+      <form className={styles.searchContainer}>
+        <Image
+          src={Logo}
+          alt="Google Logo"
+          width={600}
+          height={40}
+          className={styles.logo}
+        />
+        <div className={styles.searchWrapper}>
+          {/* Search */}
+          <SearchIcon className={styles.iconSearch} />
+          {/* Input */}
+          <input type="text" className={styles.input} />
+          {/* microphone */}
+          <MicrophoneIcon className={styles.iconMike} />
+        </div>
+        <div className={styles.buttonsWrapper}>
+          <button className={styles.buttons}>Google Search</button>
+          <button className={styles.buttons}>I&apos;m Feeling Lucky</button>
+        </div>
+      </form>
+
       {/* Footer */}
-      
     </>
-  )
+  );
 }
