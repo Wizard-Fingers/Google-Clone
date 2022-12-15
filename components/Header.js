@@ -4,7 +4,7 @@ export default function Header() {
    const styles = {
      headerLayout: "flex justify-between p-5 text-sm text-gray-700",
       LinkSet: "flex space-x-4 items-center",
-     hoverEffect: "link", //this is a custom component I created in the global.css file that looks something like the Google hover effect
+     hoverEffect: "link", //this is a custom class I created in the global.css file that looks something like the Google hover effect
     
    };
   return (
