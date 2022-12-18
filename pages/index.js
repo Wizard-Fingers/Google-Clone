@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] }); //this is the font I am using
 
 export default function Home() {
   const router = useRouter(); //this is a hook that allows us to use the router
@@ -16,8 +16,8 @@ export default function Home() {
   const search = (event) => {
     event.preventDefault(); //this prevents the page from refreshing when the button is clicked
     const term = searchInputRef.current.value; //this is the value of the input
-  if (!term.trim) return; //this is a check to make sure the input is not empty and if it is it will not do anything I also added a trim method to remove any white space
-    router.push(`/search?term=${term.trim}`); //this is the router push that will take us to the search page with the term we searched for and the trim method will remove any white space
+    if (term.trim().length === 0) return; //this is a check to make sure the input is not empty and if it is it will not do anything I also added a trim method to remove any white space
+    router.push(`/search?term=${term.trim()}`); //this is the router push that will take us to the search page with the term we searched for and the trim method will remove any white space
   };
   const styles = {
     searchContainer: "flex flex-col  mt-40 items-center",
@@ -59,22 +59,27 @@ export default function Home() {
           <SearchIcon className={styles.iconSearch} />
           {/* Input */}
           <input
+            defaultValue={router.query.term} //this is the default value of the input
             ref={searchInputRef} //this is the ref
             type="text" //this is the type of input
-            className={styles.input} 
-          /> 
+            className={styles.input}
+          />
           {/* microphone */}
           <MicrophoneIcon className={styles.iconMike} />
         </div>
         <div className={styles.buttonsWrapper}>
           {/* Buttons */}
-          <button onClick={search} //this is the onClick event that will trigger the search function
-            className={styles.buttons}>Google Search</button>
+          <button
+            onClick={search} //this is the onClick event that will trigger the search function
+            className={styles.buttons}
+          >
+            Google Search
+          </button>
           <button className={styles.buttons}>I&apos;m Feeling Lucky</button>
         </div>
       </form>
       {/* Footer */}
-      <Footer/>
+      <Footer />
     </>
   );
 }
