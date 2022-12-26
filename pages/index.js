@@ -17,7 +17,7 @@ export default function Home() {
     event.preventDefault(); //this prevents the page from refreshing when the button is clicked
     const term = searchInputRef.current.value; //this is the value of the input
     if (term.trim().length === 0) return; //this is a check to make sure the input is not empty and if it is it will not do anything I also added a trim method to remove any white space
-    router.push(`/search?term=${term.trim()}`); //this is the router push that will take us to the search page with the term we searched for and the trim method will remove any white space
+    router.push(`/search?term=${term.trim()}&searchType=`); //this is the router push that will take us to the search page with the term we searched for and the trim method will remove any white space from the search term
   };
   const styles = {
     searchContainer: "flex flex-col  mt-40 items-center",

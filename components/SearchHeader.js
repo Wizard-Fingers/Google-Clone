@@ -5,15 +5,16 @@ import { useRouter } from "next/router";
 import { useRef } from "react";
 import { SearchIcon, MicrophoneIcon, XIcon } from "@heroicons/react/solid";
 import React, { useState } from "react";
+import SearchHeaderOptions from "./SearchHeaderOptions";
 
 export default function SearchHeader() {
-  const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState(router.query.term || "");
-  const searchInputRef = useRef(null);
+  const router = useRouter(); // router is a hook
+  const [searchTerm, setSearchTerm] = useState(router.query.term || ""); // router.query.term is the search term in the url
+  const searchInputRef = useRef(null); // useRef is a hook
   const search = (event) => {
-    event.preventDefault();
-    if (!searchTerm.trim()) return;
-    router.push(`/search?term=${searchTerm.trim()}`);
+    event.preventDefault(); // prevent the page from refreshing
+    if (!searchTerm.trim()) return; // if the search term is empty, return
+    router.push(`/search?term=${searchTerm.trim()}&searchType=`); // push the search term to the url
   };
 
   const styles = {
@@ -25,16 +26,16 @@ export default function SearchHeader() {
     XIcon: "h-7 text-gray-500 cursor-pointer sm:mr-3",
     MicrophoneIcon:
       "h-6 hidden sm:inline text-blue-500 pl-4 border-l-2 border-gray-300 mr-3",
-    SearchIcon: "h-6 hidden sm:inline text-blue-500",
+    SearchIcon: "h-6 hidden sm:inline text-blue-500 cursor-pointer",
     UserWrapper: "ml-auto whitespace-nowrap",
   };
 
   return (
-    <div>
+
       <header className={styles.header}>
         <div className={styles.headerContainer}>
           <Image
-            onClick={() => router.push("/")}
+            onClick={() => router.push("/")} // push to the home page
             src={Logo}
             width={120}
             hight={50}
@@ -44,21 +45,32 @@ export default function SearchHeader() {
           <form className={styles.form}>
             <input
               type="text"
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
-              ref={searchInputRef}
-              className={styles.input}
+              value={searchTerm} // set the value of the input to the search term
+              onChange={(event) => setSearchTerm(event.target.value)} // set the search term to the value of the input
+              ref={searchInputRef} // set the ref to the input
+              className={styles.input} // set the class of the input
             />
-            <XIcon onClick={() => setSearchTerm("")} className={styles.XIcon} />
+            <XIcon
+              onClick={() => setSearchTerm("")} // set the search term to empty
+              className={styles.XIcon}
+            />
             <MicrophoneIcon className={styles.MicrophoneIcon} />
-            <SearchIcon className={styles.SearchIcon} />
-            <button hidden type="submit" onClick={search}></button>
+            <SearchIcon
+              onClick={search} // call the search function
+              className={styles.SearchIcon}
+            />
+            <button
+              hidden
+              type="submit"
+              onClick={search} // call the search function
+            ></button>
           </form>
           <div className={styles.UserWrapper}>
             <User />
           </div>
-        </div>
+      </div>
+      <SearchHeaderOptions/>
       </header>
-    </div>
+
   );
 }

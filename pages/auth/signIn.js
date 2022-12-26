@@ -1,10 +1,8 @@
 import Header from "../../components/Header";
 import { getProviders, signIn } from "next-auth/react";
 import Link from "next/link";
-
 import Image from "next/image";
 import GoogleImg from "../../public/google.png";
-
 // client side rendering
 export default function signin({ providers }) {
   const styles = {
